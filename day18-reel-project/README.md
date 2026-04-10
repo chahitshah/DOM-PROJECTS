@@ -28,12 +28,13 @@ This project focuses on dynamic rendering, event handling, and interactive UI.
 ## 📂 Project Structure
 
 ```bash
-day-30-reels-app/
-│── index.html
-│── style.css
-│── script.js
+day-18-reels-project/
+│── day18.html
+│── day18.scss
+│── day18.css
+│── day18.css.map
+│── day18.js
 │── reelsvideo/
-│── assets/
 ```
 
 ---
