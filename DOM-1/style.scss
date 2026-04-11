@@ -39,6 +39,8 @@ html,body{
         gap: 20px;
         align-items: flex-start;
         padding: 20px 20px;
+        position: absolute;
+        
         
         .cards{
             background-color: var(--tri1);
@@ -48,6 +50,7 @@ html,body{
             overflow: hidden;
             position: relative;
             transition: all 0.3s ease-in-out;
+            
            
 
             &:active{
@@ -70,6 +73,33 @@ html,body{
             }
             
         }   
+    }
+
+    .Pages{
+        height: 100%;
+        width: 100%;
+        padding: 40px 20px;
+        font-size: larger;
+        display: none;
+        position: absolute;
+        background-color: var(--pri);
+
+        .back{
+            height: 30px;
+            width: 80px;
+            background-color: var(--tri2);
+            color: var(--pri);
+            border-radius: 10px;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transition: all 0.3s ease-in-out;
+
+            &:active{
+                transform: scale(0.98);
+            }
+        }
+
     }
 
     
