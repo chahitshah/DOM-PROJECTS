@@ -9,6 +9,7 @@ html, body {
   height: 100%;
   width: 100%;
   background-color: var(--pri);
+  overflow-x: hidden;
 }
 
 :root {
@@ -18,6 +19,19 @@ html, body {
   --tri2:#4B2E2B;
 }
 
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotatebg {
+  from {
+    --rotate:0deg;
+  }
+  to {
+    --rotate:360deg;
+  }
+}
 #main {
   height: 100%;
   width: 100%;
@@ -45,12 +59,23 @@ html, body {
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.4s ease;
+  border: 0 solid transparent;
+  box-shadow: 0 0 0px var(--tri2);
+  background: linear-gradient(var(--tri2), var(--tri2)) padding-box, conic-gradient(from var(--rotate), var(--tri2), var(--sec), var(--pri), var(--sec), var(--tri2)) border-box;
+  animation: rotatebg 3s linear infinite;
+  animation-play-state: paused;
 }
 #main .Allcards .cards:active {
   transform: scale(0.98);
 }
-#main .Allcards .cards h2 {
+#main .Allcards .cards:hover {
+  animation-play-state: running;
+  border-width: 5.5px;
+  box-shadow: 0 0 40px var(--sec);
+  transform: scale(1.03);
+}
+#main .Allcards h2 {
   position: absolute;
   bottom: 2%;
   font-size: larger;
@@ -58,7 +83,7 @@ html, body {
   right: 5%;
   color: whitesmoke;
 }
-#main .Allcards .cards video {
+#main .Allcards video {
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
@@ -66,7 +91,8 @@ html, body {
   -o-object-position: center;
      object-position: center;
 }
-#main .Pages {
+
+.Pages {
   height: 100%;
   width: 100%;
   padding: 40px 20px;
@@ -75,7 +101,7 @@ html, body {
   position: absolute;
   background-color: var(--pri);
 }
-#main .Pages .back {
+.Pages .back {
   height: 30px;
   width: 80px;
   background-color: var(--tri2);
@@ -86,6 +112,142 @@ html, body {
   right: 20px;
   transition: all 0.3s ease-in-out;
 }
-#main .Pages .back:active {
+.Pages .back:active {
+  transform: scale(0.98);
+}
+
+.todo-fullpage h2 {
+  font-size: 50px;
+}
+.todo-fullpage {
+  display: block;
+}
+.todo-fullpage .todo-container {
+  height: 80%;
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todo-fullpage .todo-container .addtask {
+  height: 100%;
+  width: 30%;
+  background-color: var(--sec);
+  border-radius: 15px;
+}
+.todo-fullpage .todo-container .addtask form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.todo-fullpage .todo-container .addtask form .Entertask {
+  height: 60px;
+  width: 80%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  margin-top: 25px;
+  padding: 0 10px;
+  font-size: larger;
+  background-color: var(--tri1);
+  color: var(--pri);
+}
+.todo-fullpage .todo-container .addtask form .imp-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.todo-fullpage .todo-container .addtask form .imp-wrapper input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+.todo-fullpage .todo-container .addtask form .imp-wrapper label {
+  cursor: pointer;
+}
+.todo-fullpage .todo-container .addtask form textarea {
+  height: 350px;
+  width: 80%;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  font-size: larger;
+  background-color: var(--tri1);
+  color: var(--pri);
+}
+.todo-fullpage .todo-container .addtask form button {
+  height: 40px;
+  width: 80%;
+  background-color: var(--tri2);
+  color: var(--pri);
+  border-radius: 5px;
+  border: none;
+  font-size: larger;
+  transition: all 0.3s ease-in-out;
+}
+.todo-fullpage .todo-container .addtask form:active button {
+  transform: scale(0.98);
+}
+.todo-fullpage .todo-container .alltask {
+  height: 100%;
+  width: 69%;
+  background-color: var(--sec);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.todo-fullpage .todo-container .alltask::-webkit-scrollbar {
+  display: none;
+}
+.todo-fullpage .todo-container .alltask .task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 20px;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  background-color: var(--tri1);
+  color: var(--pri);
+}
+.todo-fullpage .todo-container .alltask .task h5 {
+  font-size: larger;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.todo-fullpage .todo-container .alltask .task h5 span {
+  background-color: red;
+  font-size: 10px;
+  border-radius: 15px;
+  padding: 4px;
+}
+.todo-fullpage .todo-container .alltask .task h5 span.true {
+  opacity: 1;
+}
+.todo-fullpage .todo-container .alltask .task h5 span.false {
+  opacity: 0;
+}
+.todo-fullpage .todo-container .alltask button {
+  background-color: green;
+  color: var(--pri);
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.todo-fullpage .todo-container .alltask:active button {
   transform: scale(0.98);
 }/*# sourceMappingURL=style.css.map */
