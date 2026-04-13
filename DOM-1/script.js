@@ -24,18 +24,15 @@ let taskinput = document.querySelector(".addtask form .Entertask ");
 let taskdetailsinput = document.querySelector(".addtask form textarea");
 let checkboxinput = document.querySelector(".addtask form #mark-imp");
 
-let currenttask = [
-    {
-        task:"mandir jao",
-        details:'dfdf',
-        imp:true
-    },
-    {
-        task:"mandir jao",
-        details:'dfdf',
-        imp:false
-    }
-]
+var currenttask = []
+
+if(localStorage.getItem("currenttask"))
+{
+    currenttask=JSON.parse(localStorage.getItem("currenttask"));
+}
+else{
+    console.log("task list is empty");
+}
 
 function renderTask()
 {
@@ -43,15 +40,17 @@ function renderTask()
 let alltask = document.querySelector(".alltask");
 var sum = '';
 
-currenttask.forEach(function(elem)
+currenttask.forEach(function(elem,idx)
 {
     sum+=`<div class="task">
                         <h5>${elem.task} <span class="${elem.imp}">Imp</span></h5>
-                        <button>Mark as Completed</button>
+                        <button id=${idx}>Mark as Completed</button>
                     </div>`
 })
 
 alltask.innerHTML=sum;
+
+localStorage.setItem("currenttask",JSON.stringify(currenttask));
 }
 
 renderTask();
@@ -61,9 +60,22 @@ form.addEventListener("submit",function(e){
     
 
     currenttask.push({task:taskinput.value,details:taskdetailsinput.value,imp:checkboxinput.checked});
+    
     taskinput.value='';
     taskdetailsinput.value='';
     checkboxinput.checked='';
 
     renderTask();
+
+    location.reload();
+})
+
+var markcompleted = document.querySelectorAll('.task button');
+markcompleted.forEach(function(elem){
+    elem.addEventListener("click",function(){
+        currenttask.splice(elem.id,1);
+
+        renderTask();
+        location.reload();
+    })
 })

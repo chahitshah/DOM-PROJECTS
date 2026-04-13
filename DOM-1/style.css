@@ -189,7 +189,7 @@ html, body {
   font-size: larger;
   transition: all 0.3s ease-in-out;
 }
-.todo-fullpage .todo-container .addtask form:active button {
+.todo-fullpage .todo-container .addtask form button:active {
   transform: scale(0.98);
 }
 .todo-fullpage .todo-container .alltask {
@@ -248,6 +248,6 @@ html, body {
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
-.todo-fullpage .todo-container .alltask:active button {
+.todo-fullpage .todo-container .alltask button:active {
   transform: scale(0.98);
 }/*# sourceMappingURL=style.css.map */
