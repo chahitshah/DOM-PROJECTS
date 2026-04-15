@@ -10,6 +10,20 @@ html, body {
   width: 100%;
   background-color: var(--pri);
   overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body.pomodoro-active {
+  overflow: hidden;
+  scrollbar-width: none;
+}
+body.pomodoro-active::-webkit-scrollbar {
+  display: none;
 }
 
 :root {
@@ -38,8 +52,19 @@ html, body {
 }
 #main nav {
   height: 50px;
-  width: 100%;
+  width: calc(100% - 20px);
   background-color: var(--sec);
+  margin: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  scrollbar-width: none;
+}
+#main nav::-webkit-scrollbar {
+  display: none;
+}
+#main nav h2 {
+  color: var(--tri2);
+  padding: 8px;
 }
 #main .Allcards {
   height: 100%;
@@ -51,6 +76,63 @@ html, body {
   align-items: flex-start;
   padding: 20px 20px;
   position: absolute;
+  z-index: 1;
+}
+#main .Allcards header {
+  height: 400px;
+  width: 92%;
+  background-color: var(--tri1);
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  color: var(--pri);
+  overflow: hidden;
+}
+#main .Allcards header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.15));
+  z-index: 1;
+}
+#main .Allcards header > video {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  z-index: 0;
+}
+#main .Allcards header .header1,
+#main .Allcards header .header2 {
+  position: relative;
+  z-index: 2;
+}
+#main .Allcards header .header1 h1, #main .Allcards header .header1 h4 {
+  font-size: 70px;
+  font-weight: 300;
+}
+#main .Allcards header .header2 h2 {
+  font-size: 60px;
+}
+#main .Allcards header .header2 h4 {
+  font-size: 30px;
+}
+#main .Allcards header .header2 h3 {
+  font-size: 25px;
+}
+#main .Allcards .allfeature {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
 }
 #main .Allcards .cards {
   background-color: var(--tri1);
@@ -75,7 +157,7 @@ html, body {
   box-shadow: 0 0 40px var(--sec);
   transform: scale(1.03);
 }
-#main .Allcards h2 {
+#main .Allcards .cards h2 {
   position: absolute;
   bottom: 2%;
   font-size: larger;
@@ -99,6 +181,9 @@ html, body {
   font-size: larger;
   display: none;
   position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
   background-color: var(--pri);
 }
 .Pages .back {
@@ -323,4 +408,42 @@ html, body {
   left: 15%;
   font-weight: 500;
   font-style: italic;
+}
+
+.pomodoro-fullpage {
+  position: relative;
+  overflow: hidden;
+  scrollbar-width: none;
+}
+.pomodoro-fullpage::-webkit-scrollbar {
+  display: none;
+}
+.pomodoro-fullpage h2 {
+  font-size: 70px;
+}
+.pomodoro-fullpage .pomo-timer {
+  background-color: var(--tri1);
+  height: 300px;
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--pri);
+  border-radius: 15px;
+}
+.pomodoro-fullpage .pomo-timer h1 {
+  font-size: 160px;
+}
+.pomodoro-fullpage .pomo-timer button {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 4px 4px 2px black;
+  transition: all ease 0.1s;
+}
+.pomodoro-fullpage .pomo-timer button:active {
+  box-shadow: 0px 0px 2px black;
 }/*# sourceMappingURL=style.css.map */
